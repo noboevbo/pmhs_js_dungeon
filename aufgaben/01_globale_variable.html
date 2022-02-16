@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Dungeon</title>
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <ol>
+    <li>Deklariere eine globale Variable mit dem Variablennamen spielername.</li>
+    <li>Initialisiere die Variable mit einem beliebigen String.</li>
+  </ol>
+  </div>
+
+  <!-- JavaScript Code -->
+  <script>
+    // *** Füge unter diesem Text deinen Code ein um die Aufgabe zu lösen ***
+    // var spielername = "Hans";
+
+    // ************ Den Code hier drunter nicht bearbeiten! *****************
+    let exerciseName = "01_globale_variable";
+    window.onload = check;
+
+    function check() {
+      if (typeof (window.spielername) === "string" && window.spielername.length > 0) {
+        localStorage.setItem("01_playerName", spielername);
+        localStorage.setItem("solved_" + exerciseName, true, true);
+        window.parent.updateExerciseState(exerciseName, true, true);
+      } else {
+        localStorage.removeItem("01_playerName");
+        localStorage.removeItem("solved_" + exerciseName);
+        window.parent.updateExerciseState(exerciseName, false);
+      }
+    }
+  </script>
+
+  <script src="../js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Dungeon</title>
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <ol>
+    <li>Deklariere eine lokale Variable mit dem Variablennamen spielername.</li>
+    <li>Initialisiere die Variable über eine Benutzereingabe (prompt("Spielername eingeben"))</li>
+  </ol>
+  </div>
+
+  <!-- JavaScript Code -->
+  <script>
+    // *** Füge unter diesem Text deinen Code ein um die Aufgabe zu lösen ***
+    // let spielername = prompt("Spielername eingeben");
+
+
+    // ************ Den Code hier drunter nicht bearbeiten! *****************
+    let exerciseName = "02_eingabe_prompt";
+    window.onload = check;
+
+    // TODO: Prüfen ob die Eingabe tatsächlich über die prompt kam?
+    function check() {
+      if (typeof(window.spielername) === "undefined" && typeof(spielername) === "string"  && spielername.length > 0) {
+        localStorage.setItem("02_playerName", spielername);
+        localStorage.setItem("solved_" + exerciseName, true);
+        window.parent.updateExerciseState(exerciseName, true, true);
+      } else {
+        localStorage.removeItem("02_playerName");
+        localStorage.removeItem("solved_" + exerciseName);
+        window.parent.updateExerciseState(exerciseName, false, true);
+      }
+    }
+  </script>
+
+  <script src="../js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

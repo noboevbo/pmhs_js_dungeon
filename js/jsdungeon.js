@@ -45,45 +45,47 @@ function initializeExercises() {
     const linkNode = document.createElement("a");
     linkNode.id = exerciseName + "_link";
     linkNode.className = "nav-link";
-    linkNode.onclick = function () { exerciseSelected(exerciseName) };
+    linkNode.onclick = function () {
+      exerciseSelected(exerciseName)
+    };
     linkNode.href = "#";
     if (localStorage.getItem("solved_" + exerciseName)) {
-      linkNode.innerText = "✅ " + exerciseName; 
+      linkNode.innerText = "✅ " + exerciseName;
     } else {
-      linkNode.innerText = "❌ " + exerciseName;  
+      linkNode.innerText = "❌ " + exerciseName;
     }
     liNode.appendChild(linkNode);
     exerciseListEl.appendChild(liNode);
   }
+}
 
-  function updateExerciseState(exerciseName, isSolved, updatePage = false) {
-    let linkNode = document.getElementById(exerciseName + "_link");
-    if (isSolved) {
-      linkNode.innerText = "✅ " + exerciseName; 
-    } else {
-      linkNode.innerText = "❌ " + exerciseName;  
-    }
-    setExperimentState(isSolved);
-    if (updatePageVariables) {
-      updatePageVariables();
-    }
+function updateExerciseState(exerciseName, isSolved, updatePage = false) {
+  let linkNode = document.getElementById(exerciseName + "_link");
+  if (isSolved) {
+    linkNode.innerText = "✅ " + exerciseName;
+  } else {
+    linkNode.innerText = "❌ " + exerciseName;
   }
-
-  window.updateExerciseState = updateExerciseState;
-
-  function exerciseSelected(exerciseName) {
-    selectedExerciseNameEl.innerText = "Aufgabe: " + exerciseName;
-    selectedExerciseEl.src = "aufgaben/" + exerciseName + ".html";
-    updateExerciseState(exerciseName, localStorage.getItem("solved_" + exerciseName));
+  setExperimentState(isSolved);
+  if (updatePageVariables) {
+    updatePageVariables();
   }
+}
 
-  function setExperimentState(isSolved) {
-    if (isSolved) {
-      exerciseResultEl.innerText = "Aufgabe korrekt gelöst!";
-      exerciseResultEl.className = "alert alert-success";
-    } else {
-      exerciseResultEl.innerText = "Aufgabe noch nicht korrekt gelöst!";
-      exerciseResultEl.className = "alert alert-danger";
-    }
+window.updateExerciseState = updateExerciseState;
+
+function exerciseSelected(exerciseName) {
+  selectedExerciseNameEl.innerText = "Aufgabe: " + exerciseName;
+  selectedExerciseEl.src = "aufgaben/" + exerciseName + ".html";
+  updateExerciseState(exerciseName, localStorage.getItem("solved_" + exerciseName));
+}
+
+function setExperimentState(isSolved) {
+  if (isSolved) {
+    exerciseResultEl.innerText = "Aufgabe korrekt gelöst!";
+    exerciseResultEl.className = "alert alert-success";
+  } else {
+    exerciseResultEl.innerText = "Aufgabe noch nicht korrekt gelöst!";
+    exerciseResultEl.className = "alert alert-danger";
   }
 }

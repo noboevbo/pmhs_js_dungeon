@@ -59,6 +59,13 @@ function initializeExercises() {
   }
 }
 
+function initializeActiveExercise() {
+  let activeExerciseName = localStorage.getItem("selectedExercise");
+  if (activeExerciseName !== null) {
+    setActiveExercise(activeExerciseName);
+  }
+}
+
 function updateExerciseState(exerciseName, isSolved, updatePage = false) {
   let linkNode = document.getElementById(exerciseName + "_link");
   if (isSolved) {
@@ -75,6 +82,11 @@ function updateExerciseState(exerciseName, isSolved, updatePage = false) {
 window.updateExerciseState = updateExerciseState;
 
 function exerciseSelected(exerciseName) {
+  localStorage.setItem("selectedExercise", exerciseName);
+  setActiveExercise(exerciseName);
+}
+
+function setActiveExercise(exerciseName) {
   selectedExerciseNameEl.innerText = "Aufgabe: " + exerciseName;
   selectedExerciseEl.src = "aufgaben/" + exerciseName + ".html";
   updateExerciseState(exerciseName, localStorage.getItem("solved_" + exerciseName));

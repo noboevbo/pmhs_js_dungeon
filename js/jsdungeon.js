@@ -11,6 +11,7 @@ selectedExerciseEl.src = ""; // Reset iFrame content on reload
 function init() {
   updatePageVariables();
   initializeExercises();
+  initializeActiveExercise();
 }
 
 window.onload = init;

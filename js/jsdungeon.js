@@ -1,6 +1,9 @@
 var exercises = [
-  "01_globale_variable",
-  "02_eingabe_prompt"
+  // id, title
+  {id: "01_globale_variable", name: "Globale Variablen"},
+  {id: "02_eingabe_prompt", name: "Eingaben über prompt()"},
+  {id: "03_ausgabe_alert", name: "Ausgaben über alert()"},
+  {id: "04_html_el_man_1", name: "HTML Elemente manipulieren 1"}
 ];
 
 var playerNameEl = document.getElementById("playerName");
@@ -40,20 +43,18 @@ function showPlayerName() {
 function initializeExercises() {
   let exerciseListEl = document.getElementById("exerciseList");
   for (var i = 0; i < exercises.length; i++) {
-    let exerciseName = exercises[i];
+    let exercise = exercises[i];
     const liNode = document.createElement("li");
     liNode.className = "nav-item";
     const linkNode = document.createElement("a");
-    linkNode.id = exerciseName + "_link";
+    linkNode.id = exercise.id + "_link";
     linkNode.className = "nav-link";
-    linkNode.onclick = function () {
-      exerciseSelected(exerciseName)
-    };
+    linkNode.setAttribute('onclick', `exerciseSelected(${i})`);
     linkNode.href = "#";
-    if (localStorage.getItem("solved_" + exerciseName)) {
-      linkNode.innerText = "✅ " + exerciseName;
+    if (localStorage.getItem("solved_" + exercise.id)) {
+      linkNode.innerText = "✅ " + `${i}`.padStart(2, "0") + ": " + exercise.name;
     } else {
-      linkNode.innerText = "❌ " + exerciseName;
+      linkNode.innerText = "❌ " + `${i}`.padStart(2, "0") + ": " + exercise.name;
     }
     liNode.appendChild(linkNode);
     exerciseListEl.appendChild(liNode);
@@ -61,36 +62,33 @@ function initializeExercises() {
 }
 
 function initializeActiveExercise() {
-  let activeExerciseName = localStorage.getItem("selectedExercise");
-  if (activeExerciseName !== null) {
-    setActiveExercise(activeExerciseName);
+  let activeExerciseNumber = localStorage.getItem("selectedExercise");
+  if (activeExerciseNumber !== null && exercises.length >= activeExerciseNumber) {
+    setActiveExercise(exercises[activeExerciseNumber]);
   }
 }
 
-function updateExerciseState(exerciseName, isSolved, updatePage = false) {
-  let linkNode = document.getElementById(exerciseName + "_link");
-  if (isSolved) {
-    linkNode.innerText = "✅ " + exerciseName;
-  } else {
-    linkNode.innerText = "❌ " + exerciseName;
-  }
+function updateExerciseState(exerciseID, isSolved, updatePage = false) {
+  let linkNode = document.getElementById(exerciseID + "_link");
+  let stateSymbol = isSolved ? '✅' : '❌';
+  linkNode.innerText = linkNode.innerText.replace(/^.{1}/g, stateSymbol);
   setExperimentState(isSolved);
-  if (updatePageVariables) {
+  if (updatePage) {
     updatePageVariables();
   }
 }
 
 window.updateExerciseState = updateExerciseState;
 
-function exerciseSelected(exerciseName) {
-  localStorage.setItem("selectedExercise", exerciseName);
-  setActiveExercise(exerciseName);
+function exerciseSelected(exerciseNumber) {
+  localStorage.setItem("selectedExercise", exerciseNumber);
+  setActiveExercise(exercises[exerciseNumber]);
 }
 
-function setActiveExercise(exerciseName) {
-  selectedExerciseNameEl.innerText = "Aufgabe: " + exerciseName;
-  selectedExerciseEl.src = "aufgaben/" + exerciseName + ".html";
-  updateExerciseState(exerciseName, localStorage.getItem("solved_" + exerciseName));
+function setActiveExercise(exercise) {
+  selectedExerciseNameEl.innerText = "Aufgabe: " + exercise.name;
+  selectedExerciseEl.src = "aufgaben/" + exercise.id + ".html";
+  updateExerciseState(exercise.id, localStorage.getItem("solved_" + exercise.id));
 }
 
 function setExperimentState(isSolved) {

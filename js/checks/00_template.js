@@ -1,4 +1,4 @@
-let exerciseName = "TODO: Exercise Name einfügen";
+let exerciseID = "TODO: Exercise Name einfügen";
 check();
 
 function check() {

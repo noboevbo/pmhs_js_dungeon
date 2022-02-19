@@ -3,7 +3,9 @@ var exercises = [
   {id: "01_globale_variable", name: "Globale Variablen"},
   {id: "02_eingabe_prompt", name: "Eingaben über prompt()"},
   {id: "03_ausgabe_alert", name: "Ausgaben über alert()"},
-  {id: "04_html_el_man_1", name: "HTML Elemente manipulieren 1"}
+  {id: "04_html_el_man_1", name: "HTML Elemente manipulieren 1"},
+  {id: "05_html_el_man_2", name: "HTML Elemente manipulieren 2"},
+  {id: "06_html_el_man_3", name: "HTML Elemente manipulieren 3"}
 ];
 
 var playerNameEl = document.getElementById("playerName");

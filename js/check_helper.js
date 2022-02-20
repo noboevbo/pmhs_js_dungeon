@@ -1,4 +1,4 @@
-import { globalVarDoesNotExistMsg, localVarDoesNotExistMsg, isGlobalNotLocalMsg, wrongTypeMsg, stringIsEmptyMsg, isNotConstMsg, elDoesNotExistMsg, elWrongInnerTextMsg, elWrongStyleValueMsg } from './error_messages.js'
+import { globalVarDoesNotExistMsg, localVarDoesNotExistMsg, isGlobalNotLocalMsg, wrongTypeMsg, stringIsEmptyMsg, isNotConstMsg, elDoesNotExistMsg, elWrongInnerTextMsg, elWrongStyleValueMsg, wrongValueMsg } from './error_messages.js'
 
 export function getFailResultObj(errorMessage) {
   return {result: false, errorMessage}
@@ -21,6 +21,13 @@ export function localVarExists(variable, varName) {
   }
   if (typeof(variable) === "undefined") {
     return getFailResultObj(localVarDoesNotExistMsg(varName))
+  }
+  return getSuccessResultObj();
+}
+
+export function valueEquals(variable, varName, val) {
+  if (variable !== val) {
+    return getFailResultObj(wrongValueMsg(varName, val));
   }
   return getSuccessResultObj();
 }

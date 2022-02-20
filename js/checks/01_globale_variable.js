@@ -10,9 +10,13 @@ function beforeSuccess() {
   localStorage.setItem("01_playerName", spielername);
 }
 
+function afterSuccess() {
+  window.parent.updatePageVariables();
+}
+
 function beforeFail() {
   localStorage.removeItem("01_playerName");
 }
 
-window.onload = function() { validate(exerciseID, validationFuncs, beforeSuccess, noop, beforeFail) };
+window.onload = function() { validate(exerciseID, validationFuncs, beforeSuccess, afterSuccess, beforeFail) };
 

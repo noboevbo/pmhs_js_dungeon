@@ -102,13 +102,13 @@ export function validate(exerciseID, validationFuncs, beforeSuccess = noop, afte
   }
   if (finalResult) {
     beforeSuccess();
-    localStorage.setItem("solved_" + exerciseID, true, true);
-    window.parent.updateExerciseState(exerciseID, true, true);
+    localStorage.setItem("solved_" + exerciseID, true);
+    window.parent.updateExerciseState(exerciseID, true, errorMessages);
     afterSuccess();
   } else {
     beforeFail();
     localStorage.removeItem("solved_" + exerciseID);
-    window.parent.updateExerciseState(exerciseID, false);
+    window.parent.updateExerciseState(exerciseID, false, errorMessages);
     afterFail();
   }
 }

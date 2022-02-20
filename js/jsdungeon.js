@@ -13,6 +13,8 @@ var playerNameEl = document.getElementById("playerName");
 var selectedExerciseNameEl = document.getElementById("selectedExerciseName");
 var selectedExerciseEl = document.getElementById("selectedExercise");
 var exerciseResultEl = document.getElementById("exerciseResult");
+var exerciseResultHeaderEl = document.getElementById("exerciseResultHeader");
+var exerciseResultMessageListEl = document.getElementById("exerciseResultMessageList");
 selectedExerciseEl.src = ""; // Reset iFrame content on reload
 function init() {
   updatePageVariables();
@@ -71,14 +73,11 @@ function initializeActiveExercise() {
   }
 }
 
-function updateExerciseState(exerciseID, isSolved, updatePage = false) {
+function updateExerciseState(exerciseID, isSolved, errorMessages = []) {
   let linkNode = document.getElementById(exerciseID + "_link");
   let stateSymbol = isSolved ? '✅' : '❌';
   linkNode.innerText = linkNode.innerText.replace(/^.{1}/g, stateSymbol);
-  setExperimentState(isSolved);
-  if (updatePage) {
-    updatePageVariables();
-  }
+  setExperimentState(isSolved, errorMessages);
 }
 
 window.updateExerciseState = updateExerciseState;
@@ -94,12 +93,23 @@ function setActiveExercise(exercise) {
   updateExerciseState(exercise.id, localStorage.getItem("solved_" + exercise.id));
 }
 
-function setExperimentState(isSolved) {
+function setExperimentState(isSolved, messages = []) {
+  exerciseResultMessageListEl.innerHTML = "";
   if (isSolved) {
-    exerciseResultEl.innerText = "Aufgabe korrekt gelöst!";
     exerciseResultEl.className = "alert alert-success";
+    exerciseResultHeaderEl.innerText = "Aufgabe korrekt gelöst!";
   } else {
-    exerciseResultEl.innerText = "Aufgabe noch nicht korrekt gelöst!";
     exerciseResultEl.className = "alert alert-danger";
+    exerciseResultHeaderEl.innerText = "Aufgabe noch nicht korrekt gelöst!";
   }
+  for (let i=0; i<messages.length; i++) {
+    exerciseResultMessageListEl.appendChild(getResultMessageListItem(messages[i]))
+  }
+}
+
+function getResultMessageListItem(message) {
+  var li = document.createElement("li");
+  li.className = "list-group-item";
+  li.innerText = message;
+  return li
 }

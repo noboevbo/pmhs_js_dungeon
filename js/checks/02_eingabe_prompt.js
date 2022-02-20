@@ -21,11 +21,15 @@ function beforeSuccess() {
   localStorage.setItem("02_playerName", spielername);
 }
 
+function afterSuccess() {
+  window.parent.updatePageVariables();
+}
+
 function beforeFail() {
   localStorage.removeItem("02_playerName");
 }
 
-window.onload = function() { validate(exerciseID, validationFuncs, beforeSuccess, noop, beforeFail) };
+window.onload = function() { validate(exerciseID, validationFuncs,beforeSuccess, afterSuccess, beforeFail) };
 
 
 

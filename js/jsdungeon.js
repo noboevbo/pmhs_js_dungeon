@@ -6,7 +6,8 @@ var exercises = [
   {id: "04_html_el_man_1", name: "HTML Elemente manipulieren 1"},
   {id: "05_html_el_man_2", name: "HTML Elemente manipulieren 2"},
   {id: "06_html_el_man_3", name: "HTML Elemente manipulieren 3"},
-  {id: "07_input_field_1", name: "Eingabefeld auslesen"},
+  {id: "07_input_field_1", name: "Eingabefeld auslesen 1"},
+  {id: "08_input_field_2", name: "Eingabefeld auslesen 2"},
 ];
 
 var playerNameEl = document.getElementById("playerName");

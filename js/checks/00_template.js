@@ -1,12 +1,10 @@
-let exerciseID = "TODO: Exercise Name einfügen";
-check();
+import { validate } from '../check_helper.js';
 
-function check() {
-  if (TODO: Bedingung für Korrektheit einfügen) {
-    localStorage.setItem("solved_" + exerciseName, true);
-    window.parent.updateExerciseState(exerciseName, true);
-  } else {
-    localStorage.removeItem("solved_" + exerciseName);
-    window.parent.updateExerciseState(exerciseName, false);
-  }
-}
+let exerciseID = "TODO: insert id";
+
+let validationFuncs = [
+  // TODO: add checks and return {result: xy, errorMessage: xy}, see check_helper for examples
+  function() { return TODO }
+]
+
+window.onload = function() { validate(exerciseID, validationFuncs) };

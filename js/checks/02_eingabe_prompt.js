@@ -1,19 +1,31 @@
-let exerciseName = "02_eingabe_prompt";
-window.onload = check;
+import { validate, isNonEmptyString, localVarExists, getSuccessResultObj, getFailResultObj, scriptIncludes, noop } from '../check_helper.js';
 
-// TODO: Prüfen ob die Eingabe tatsächlich über die prompt kam?
-function check() {
-  let scriptEl = document.getElementById("exerciseScript");
-  if (typeof (window.spielername) === "undefined" &&
-    typeof (spielername) === "string" &&
-    spielername.length > 0 &&
-    scriptEl.innerText.includes("prompt(")) {
-    localStorage.setItem("02_playerName", spielername);
-    localStorage.setItem("solved_" + exerciseName, true);
-    window.parent.updateExerciseState(exerciseName, true, true);
+let exerciseID = "02_eingabe_prompt";
+
+function spielernameExists() {
+  if(typeof(spielername) !== "undefined") {
+    return getSuccessResultObj();
   } else {
-    localStorage.removeItem("02_playerName");
-    localStorage.removeItem("solved_" + exerciseName);
-    window.parent.updateExerciseState(exerciseName, false, true);
+    return getFailResultObj("Die lokale Variable spielername existiert nicht.")
   }
 }
+
+let validationFuncs = [
+  function() { return spielernameExists() },
+  function() { return localVarExists(spielername, "spielername") },
+  function() { return isNonEmptyString(spielername, "spielername") },
+  function() { return scriptIncludes("prompt(") }
+]
+
+function beforeSuccess() {
+  localStorage.setItem("02_playerName", spielername);
+}
+
+function beforeFail() {
+  localStorage.removeItem("02_playerName");
+}
+
+window.onload = function() { validate(exerciseID, validationFuncs, beforeSuccess, noop, beforeFail) };
+
+
+

@@ -8,9 +8,18 @@ function test() {
   var s = buttonGeklickt + '';
   var result = esprima.parse(s);
   estraverse.traverse(result, {
-    enter: function(node){
+    enter: function(node){ // VariableDeclaration = let
       if (node.type === 'VariableDeclarator'){
-        console.log('Encountered variable declaration of', node.id.name);
+        let varname = node.id.name;
+        console.log(`Encountered variable declaration of ${varname}.`);
+        if (node.init.type === "Literal") {
+          let varvalue = node.init.value;
+          console.log(`It is initialized with value: ${varvalue}.`);
+        }
+        // bei let spielername = document.getElementById("eingabe1").value;
+        // node.init.type === "StaticMemberExpression"
+        // node.init.property === 'value'
+        // node.init.object.arguments[0].type = Literal, value = eingabe1
       }
     }
   });

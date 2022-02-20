@@ -5,3 +5,14 @@
 2. Im Template die TODOs (Anleitung erstellen + externe JS Check Datei (js/checks/aufgabenname.js) einbinden)
 3. Im Ordner js/checks/ das Template kopieren und unter neuem Aufgabennamen einfügen und den Check implementieren
 4. In der Datei js/jsdungeon.js das Array exerciseList um die neue Aufgabe (Aufgabenname == Dateiname) erweitern
+
+## TODOs
+Verzweigungen, z.B. 
+
+if (hour < 18) {
+  greeting = "Good day";
+} else {
+  greeting = "Good evening";
+} 
+
+Teil vorgeben und nur die Bedingung machen lassen, danach var greeting checken

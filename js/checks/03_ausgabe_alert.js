@@ -11,4 +11,8 @@ let validationFuncs = [
 window.onload = function() { validate(exerciseID, validationFuncs) };
 
 
-
+// Tests
+    // var id = 42;
+    // const id = "42";
+    // const id = 42;
+    // alert(id);

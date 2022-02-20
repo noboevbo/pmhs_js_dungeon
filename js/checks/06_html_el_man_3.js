@@ -7,3 +7,6 @@ let validationFuncs = [
 ]
 
 window.onload = function() { validate(exerciseID, validationFuncs) };
+
+// Tests
+// document.getElementById("idvonueberschrift").style.backgroundColor = "yellow";

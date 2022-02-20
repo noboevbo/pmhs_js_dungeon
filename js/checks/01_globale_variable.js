@@ -20,3 +20,8 @@ function beforeFail() {
 
 window.onload = function() { validate(exerciseID, validationFuncs, beforeSuccess, afterSuccess, beforeFail) };
 
+// Tests
+    // var spielername = "Hans";
+    // let spielername = "Hans";
+    // var spielername = 42;
+

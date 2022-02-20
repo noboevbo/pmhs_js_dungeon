@@ -33,3 +33,9 @@ let validationFuncs = [
 
 
 window.onload = function() { validate(exerciseID, validationFuncs) };
+
+// Tests
+      // var spielername = document.getElementById("eingabe1").value;
+      // let spielername = "x";
+      // let spielername = document.getElementById("eingabe1").value;
+      // alert(spielername);

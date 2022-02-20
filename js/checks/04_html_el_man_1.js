@@ -8,5 +8,6 @@ let validationFuncs = [
 
 window.onload = function() { validate(exerciseID, validationFuncs) };
 
-
+// Tests
+// document.getElementById("idvonueberschrift").innerText = "Hi";
 

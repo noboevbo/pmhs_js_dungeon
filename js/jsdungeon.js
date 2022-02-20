@@ -10,6 +10,9 @@ var exercises = [
     { id: "07_input_field_1", name: "Eingabefeld auslesen 1" },
     { id: "08_input_field_2", name: "Eingabefeld auslesen 2" },
     { id: "09_datentyp_number", name: "Datentyp Number" },
+    { id: "10_datentyp_string", name: "Datentyp String" },
+    { id: "11_datentyp_mix", name: "Verschiedene Datentypen mischen" },
+    { id: "12_datentyp_bool_vergleich", name: "Datentyp Boolean und Vergleiche" },
 ];
 
 var playerNameEl = document.getElementById("playerName");

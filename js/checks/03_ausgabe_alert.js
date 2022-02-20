@@ -1,24 +1,14 @@
-let exerciseName = "03_ausgabe_alert";
-window.onload = check;
+import { validate, scriptIncludes, isConst, isType } from '../check_helper.js';
 
-// TODO: Prüfen ob die Eingabe tatsächlich über die prompt kam?
-function check() {
-  let scriptEl = document.getElementById("exerciseScript");
-  let isCorrect = false;
-  if (typeof (id) === "number" &&
-    scriptEl.innerText.includes("alert(")) {
-      try {
-        id = 0; // Not a const
-      } catch (error) {
-        isCorrect = true;
-      }
-    }
+let exerciseID = "03_ausgabe_alert";
 
-  if (isCorrect) {
-    localStorage.setItem("solved_" + exerciseName, true);
-    window.parent.updateExerciseState(exerciseName, true, true);
-  } else {
-    localStorage.removeItem("solved_" + exerciseName);
-    window.parent.updateExerciseState(exerciseName, false, true);
-  }
-}
+let validationFuncs = [
+  function() { return isConst("id") },
+  function() { return isType(id, "id", "number") },
+  function() { return scriptIncludes("alert(") }
+]
+
+window.onload = function() { validate(exerciseID, validationFuncs) };
+
+
+

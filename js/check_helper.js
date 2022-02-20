@@ -1,4 +1,4 @@
-import { globalVarDoesNotExistMsg, localVarDoesNotExistMsg, isGlobalNotLocalMsg, wrongTypeMsg, stringIsEmptyMsg } from './error_messages.js'
+import { globalVarDoesNotExistMsg, localVarDoesNotExistMsg, isGlobalNotLocalMsg, wrongTypeMsg, stringIsEmptyMsg, isNotConstMsg, elDoesNotExistMsg, elWrongInnerTextMsg, elWrongStyleValueMsg } from './error_messages.js'
 
 export function getFailResultObj(errorMessage) {
   return {result: false, errorMessage}
@@ -9,17 +9,17 @@ export function getSuccessResultObj() {
 }
 
 export function globalVarExists(globalVarName) {
-  if (typeof (window[globalVarName]) === "undefined") {
+  if (typeof(window[globalVarName]) === "undefined") {
     return getFailResultObj(globalVarDoesNotExistMsg(globalVarName));
   }
   return getSuccessResultObj();
 }
 
 export function localVarExists(variable, varName) {
-  if (window[varName] !== "undefined") {
+  if (typeof(window[varName]) !== "undefined") {
     return getFailResultObj(isGlobalNotLocalMsg(varName));
   }
-  if (variable !== "undefined") {
+  if (typeof(variable) === "undefined") {
     return getFailResultObj(localVarDoesNotExistMsg(varName))
   }
   return getSuccessResultObj();
@@ -42,6 +42,50 @@ export function scriptIncludes(requiredText) {
   }
   return getSuccessResultObj();
 }
+
+export function isConst(varName) {
+  try {
+    eval(`${varName} = 0`); // Not a const
+  } catch (error) {
+    if (error instanceof TypeError) {
+      return getSuccessResultObj();
+    }
+  }
+  return getFailResultObj(isNotConstMsg(varName));
+}
+
+export function isType(variable, varName, typeName) {
+  if (typeof (variable) === typeName) {
+    return getSuccessResultObj();
+  }
+  return getFailResultObj(wrongTypeMsg(varName, typeName));
+}
+
+export function innerTextEquals(elName, innerText) {
+  let h1El = document.getElementById(elName);
+  if (!h1El) {
+    return getFailResultObj(elDoesNotExistMsg(elName));
+  } 
+  if (h1El.innerText !== innerText) {
+    return getFailResultObj(elWrongInnerTextMsg(elName, innerText));
+  }
+  return getSuccessResultObj();
+}
+
+export function hasCorrectStyleValue(elName, styleName, styleValue) {
+  let h1El = document.getElementById(elName);
+  if (!h1El) {
+    return getFailResultObj(elDoesNotExistMsg(elName));
+  } 
+  if (h1El.style[styleName] !== styleValue) {
+    return getFailResultObj(elWrongStyleValueMsg(elName, styleName, styleValue));
+  }
+  return getSuccessResultObj();
+}
+
+
+
+/* Main validation procedure */
 
 export const noop = () => {};
 

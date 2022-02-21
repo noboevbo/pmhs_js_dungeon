@@ -10,3 +10,4 @@ export const scriptDoesNotContainMsg = (requiredText) => { return `Dein Script e
 export const elDoesNotExistMsg = (elName) => { return `Das HTML Element <i>${elName}</i> existiert nicht!` };
 export const elWrongInnerTextMsg = (elName, innerText) => { return `Der innerText des HTML Elements <i>${elName}</i> ist nicht <i>${innerText}</i>!` };
 export const elWrongStyleValueMsg = (elName, styleName, styleValue) => { return `Der Style <i>${styleName}</i> von HTML Element <i>${elName}</i> ist nicht <i>${styleValue}</i>!` };
+export const logCallDoesNotExist = (strValue) => { return `Der console.log-Aufruf mit Wert <i>${strValue}</i> existiert nicht!` };

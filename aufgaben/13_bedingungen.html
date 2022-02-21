@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Dungeon</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <ol>
+        <li>Formuliere die Bedingung 1: Wenn <i>health</i> größer ist als 100, dann ... </li>
+        <li>Füge eine Ausgabe mit Hilfe der <em>console.log()</em> Funktion ein, welche die aktuellen Werte von health und lives in der Form <i>"Gesundheit: 100 - Leben: 3"</i>ausgibt. Tipp: Schau dir das Beispiel bei Bedingung 2 an.</li>
+        <li>Formuliere die Bedingung 2: Wenn <i>strength</i> kleiner gleich ist wie <i>enemy</i>, dann ...</li>
+        <li>Formuliere die Bedingung 3: Wenn <i>equipment</i> den Wert <i>"Schwert"</i> hat, dann ...</li>
+        <li>Öffne die Entwicklertools deines Browsers und sieh dir die Ausgabe in der Console an.</li>
+    </ol>
+    </div>
+
+    <!-- JavaScript Code -->
+    <script id="exerciseScript">
+        // *** Füge unter diesem Text deinen Code ein um die Aufgabe zu lösen ***
+        let health = 120
+        let lives = 3
+
+        if(false /*Bedingung 1 hier statt "false" einfügen*/){
+            health = 100
+            lives++
+
+        }
+        
+        //Ersetze diesen Kommentar durch eine Ausgabe für health und lives mit "console.log()"
+
+        let strength = 10
+        let enemy = 11
+
+        if(false /*Bedingung 2 hier statt "false" einfügen*/){
+            console.log("Verloren! Stärkenvergleich: Du "+strength+" vs. Gegner "+enemy)
+            health = health - 20
+        } else {
+            console.log("Gewonnen! Stärkenvergleich: Du "+strength+" vs. Gegner "+enemy)
+            strength = strength + 1
+        }
+
+        let equipment = "Schwert"
+
+        if(false /*Bedingung 3 hier statt "false" einfügen*/){
+            strength += 5
+            console.log("Deine Stärke ist jetzt "+strength+", denn du hast ein "+equipment+"!")
+        }
+
+    </script>
+
+    <!-- ************ Den Code hier drunter nicht bearbeiten! ***************** -->
+    <script type="module" src="../js/checks/13_bedingungen.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

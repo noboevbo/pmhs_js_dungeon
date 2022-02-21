@@ -13,7 +13,18 @@ var exercises = [
     { id: "10_datentyp_string", name: "Datentyp String" },
     { id: "11_datentyp_mix", name: "Verschiedene Datentypen mischen" },
     { id: "12_datentyp_bool_vergleich", name: "Datentyp Boolean und Vergleiche" },
+    { id: "13_bedingungen", name: "Bedingungen" },
+    { id: "14_bedingte_anweisungen", name: "Bedingte Anweisungen" },
+    { id: "15_verzweigung", name: "Verzweigungen" },
 ];
+
+var logcalls = [];
+// Replace console.log with stub implementation and add.
+const originalLog = console.log;
+console.log = (...args) => {
+    logcalls.push(args);
+    originalLog(...args);
+};
 
 var playerNameEl = document.getElementById("playerName");
 var selectedExerciseNameEl = document.getElementById("selectedExerciseName");

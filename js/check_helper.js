@@ -1,4 +1,4 @@
-import { globalVarDoesNotExistMsg, localVarDoesNotExistMsg, isGlobalNotLocalMsg, wrongTypeMsg, stringIsEmptyMsg, isNotConstMsg, elDoesNotExistMsg, elWrongInnerTextMsg, elWrongStyleValueMsg, wrongValueMsg } from './error_messages.js'
+import { globalVarDoesNotExistMsg, localVarDoesNotExistMsg, isGlobalNotLocalMsg, wrongTypeMsg, stringIsEmptyMsg, isNotConstMsg, elDoesNotExistMsg, elWrongInnerTextMsg, elWrongStyleValueMsg, wrongValueMsg, logCallDoesNotExist } from './error_messages.js'
 
 export function getFailResultObj(errorMessage) {
   return {result: false, errorMessage}
@@ -90,7 +90,15 @@ export function hasCorrectStyleValue(elName, styleName, styleValue) {
   return getSuccessResultObj();
 }
 
-
+export function consoleContains(strValue){
+    for(let c in window.logcalls){
+      if(c.includes(strValue)){
+        window.logcalls = [];
+        return getSuccessResultObj();
+      }
+    }
+    return getFailResultObj(logCallDoesNotExist(strValue));
+}
 
 /* Main validation procedure */
 

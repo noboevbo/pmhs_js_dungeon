@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Dungeon</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <ol>
+        <li>Implementiere die Funktion <i>zahlenraten()</i> wie beschrieben. Sie liest die Eingabe
+            des Benutzers aus dem Feld mit der <i>id: eingabe1</i> als number (vauelAsNumber), speichere sie in einer lokalen Variable <i>ein</i> und entscheidet:
+            <ul>
+                <li>Wenn die Zahl in <i>ein</i> gleich ist wie <i>zufall</i>, dann gib in einem <i>alert</i> "Runde gewonnen!" aus, weise <i>zufall</i> einen neuen Zufallswert zu und beende die Funktion mit <em>return true</em>.</li>
+                <li>Wenn die Zahl in <i>ein</i> größer ist als <i>zufall</i>, dann gib in einem <i>alert</i> "Zahl ist zu groß!" aus. Ansonsten gibt in einem <i>alert</i> "Zahl ist zu klein!" aus. </li>
+            </ul>
+        </li>
+    </ol>
+
+    <hr>
+    <h2>Zahlenraten</h2>
+    <p>Rate eine Zahl zwischen 0 und 10 und gib sie im Eingabefeld ein.</p>
+    <input type="number" id="eingabe1" class="form-control" placeholder="Geratene Zahl" value="0">
+    <button class="btn btn-outline-secondary" type="button"
+    onclick="zahlenraten()">Absenden</button>
+
+    </div>
+
+    <!-- JavaScript Code -->
+    <script id="exerciseScript">
+        // *** Füge unter diesem Text deinen Code ein um die Aufgabe zu lösen ***
+
+        //Der globalen Variable zufall wird eine zufällige ganze Zahl zwischen 0 und 10 zugewiesen
+        var zufall = Math.floor(Math.random() * 10)
+
+        function zahlenraten(){
+
+        }
+
+    </script>
+
+    <!-- ************ Den Code hier drunter nicht bearbeiten! ***************** -->
+    <script type="module" src="../js/checks/14_bedingte_anweisungen.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

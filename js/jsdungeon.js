@@ -18,13 +18,17 @@ var exercises = [
     { id: "15_verzweigung", name: "Verzweigungen" },
 ];
 
-var logcalls = [];
 // Replace console.log with stub implementation and add.
-const originalLog = console.log;
-console.log = (...args) => {
-    logcalls.push(args);
-    originalLog(...args);
-};
+window.console.stdlog = console.log.bind(console);
+window.console.log = function(txt){
+    console.stdlog(txt);
+    let logcalls = JSON.parse(localStorage.getItem("logcalls"));
+    if(!logcalls){
+        logcalls = [];
+    }
+    logcalls.push(txt);
+    localStorage.setItem("logcalls", JSON.stringify(logcalls));
+}
 
 var playerNameEl = document.getElementById("playerName");
 var selectedExerciseNameEl = document.getElementById("selectedExerciseName");

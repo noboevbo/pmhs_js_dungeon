@@ -91,9 +91,11 @@ export function hasCorrectStyleValue(elName, styleName, styleValue) {
 }
 
 export function consoleContains(strValue){
-    for(let c in window.logcalls){
+  let lcalls = JSON.parse(localStorage.getItem("logcalls"));
+    for(let c in lcalls){
       if(c.includes(strValue)){
-        window.logcalls = [];
+        lcalls = [];
+        localStorage.setItem("logcalls", JSON.stringify(lcalls));
         return getSuccessResultObj();
       }
     }

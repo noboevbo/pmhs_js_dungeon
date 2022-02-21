@@ -1,4 +1,4 @@
-import { validate, getSuccessResultObj, getFailResultObj, localVarExists, valueEquals } from '../check_helper.js';
+import { validate, getSuccessResultObj, scriptIncludes } from '../check_helper.js';
 
 let exerciseID = "08_input_field_2";
 let esprima = window.parent.esprima;
@@ -28,7 +28,9 @@ function test() {
 
 
 let validationFuncs = [
-  function() { return test() },
+  function() { return scriptIncludes("document.getElementByID(\"eingabe1\"") },
+  function() { return scriptIncludes("let spielername") },
+  function() { return scriptIncludes("alert(") },
 ]
 
 

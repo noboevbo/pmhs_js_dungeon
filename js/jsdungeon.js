@@ -18,6 +18,8 @@ var exercises = [
     { id: "15_verzweigung", name: "Verzweigungen" },
 ];
 
+const emptyExerciseState = {solved: false, tippsPurchased: [], lastUpdate: Date.now()};
+
 // Replace console.log with stub implementation and add.
 window.console.stdlog = console.log.bind(console);
 window.console.log = function(txt){
@@ -36,15 +38,27 @@ var selectedExerciseEl = document.getElementById("selectedExercise");
 var exerciseResultEl = document.getElementById("exerciseResult");
 var exerciseResultHeaderEl = document.getElementById("exerciseResultHeader");
 var exerciseResultMessageListEl = document.getElementById("exerciseResultMessageList");
-selectedExerciseEl.src = ""; // Reset iFrame content on reload
+var exerciseTippListEl = document.getElementById("exerciseTipps");
 
 function init() {
+    initializeDatabase(exercises);
     updatePageVariables();
     initializeExercises();
     initializeActiveExercise();
 }
 
 window.onload = init;
+
+function initializeDatabase(exercises) {
+    for(let i=0; i<exercises.length; i++) {
+        let exercise = exercises[i];
+        let item = localStorage.getItem(exercise.id);
+        if (item !== null) {
+            continue
+        }
+        writeExerciseState(exercise.id, emptyExerciseState);
+    }
+}
 
 function updatePageVariables() {
     /* 
@@ -71,6 +85,7 @@ function initializeExercises() {
     let exerciseListEl = document.getElementById("exerciseList");
     for (var i = 0; i < exercises.length; i++) {
         let exercise = exercises[i];
+        let exerciseState = getExerciseState(exercise.id);
         const liNode = document.createElement("li");
         liNode.className = "nav-item";
         const linkNode = document.createElement("a");
@@ -78,7 +93,7 @@ function initializeExercises() {
         linkNode.className = "nav-link";
         linkNode.setAttribute('onclick', `exerciseSelected(${i})`);
         linkNode.href = "#";
-        if (localStorage.getItem("solved_" + exercise.id)) {
+        if (exerciseState.solved) {
             linkNode.innerText = "✅ " + `${i}`.padStart(2, "0") + ": " + exercise.name;
         } else {
             linkNode.innerText = "❌ " + `${i}`.padStart(2, "0") + ": " + exercise.name;
@@ -95,11 +110,11 @@ function initializeActiveExercise() {
     }
 }
 
-function updateExerciseState(exerciseID, isSolved, errorMessages = []) {
+function updateExerciseState(exerciseID, exerciseState, errorMessages = []) {
     let linkNode = document.getElementById(exerciseID + "_link");
-    let stateSymbol = isSolved ? '✅' : '❌';
+    let stateSymbol = exerciseState.solved ? '✅' : '❌';
     linkNode.innerText = linkNode.innerText.replace(/^.{1}/g, stateSymbol);
-    setExperimentState(isSolved, errorMessages);
+    setExperimentState(exerciseState.solved, errorMessages);
 }
 
 window.updateExerciseState = updateExerciseState;
@@ -112,7 +127,7 @@ function exerciseSelected(exerciseNumber) {
 function setActiveExercise(exercise) {
     selectedExerciseNameEl.innerText = "Aufgabe: " + exercise.name;
     selectedExerciseEl.src = "aufgaben/" + exercise.id + ".html";
-    updateExerciseState(exercise.id, localStorage.getItem("solved_" + exercise.id));
+    updateExerciseState(exercise.id, getExerciseState(exercise.id));
 }
 
 function setExperimentState(isSolved, messages = []) {
@@ -134,4 +149,49 @@ function getResultMessageListItem(message) {
     li.className = "list-group-item";
     li.innerHTML = message;
     return li
+}
+
+const tippItemClasses = "list-group-item list-group-item-action flex-column align-items-start";
+function initializeTipps(exerciseState, tipps = []) {
+    exerciseTippListEl.innerHTML = "";
+    for (let i = 0; i < tipps.length; i++) {
+        let isPurchased = tippIsPurchased(exerciseState, tippNum);
+        // document.addE
+    }
+
+
+    // let exercise = exercises[i];
+    // const liNode = document.createElement("li");
+    // liNode.className = "nav-item";
+    // const linkNode = document.createElement("a");
+    // linkNode.id = exercise.id + "_link";
+    // linkNode.className = "nav-link";
+    // linkNode.setAttribute('onclick', `exerciseSelected(${i})`);
+    // linkNode.href = "#";
+    // if (localStorage.getItem("solved_" + exercise.id)) {
+    //     linkNode.innerText = "✅ " + `${i}`.padStart(2, "0") + ": " + exercise.name;
+    // } else {
+    //     linkNode.innerText = "❌ " + `${i}`.padStart(2, "0") + ": " + exercise.name;
+    // }
+    // liNode.appendChild(linkNode);
+    // exerciseListEl.appendChild(liNode);
+}
+
+function tippIsPurchased(exerciseState, tippNum) {
+    if (exerciseState.tippsPurchased.length > tippNum) {
+        return exerciseState.tippsPurchased[tippNum];
+    }
+    return false;
+}
+
+function getExerciseState(exerciseID) {
+    let item = localStorage.getItem(exerciseID);
+    if (item === null) {
+        return item;
+    }
+    return JSON.parse(item);
+}
+
+function writeExerciseState(exerciseID, exerciseState) {
+    localStorage.setItem(exerciseID, JSON.stringify(exerciseState))
 }

@@ -24,27 +24,46 @@
   <div class="container-fluid">
     <div class="row">
       <!-- Sidebar links -->
-      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
         <div class="position-sticky pt-3">
+          <h4>Aufgaben</h4>
           <ul id="exerciseList" class="nav flex-column">
           </ul>
         </div>
       </nav>
 
       <!-- Inhalt der Seite -->
-      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <main class="col-md-6 ms-sm-auto col-lg-8 px-md-4">
         <div class="container">
-          <h1 id="selectedExerciseName">Wähle eine Aufgabe auf. Starte am besten mit dem Tutorial und gehe dann der Reihe nach vor!</h1>
+          <h1 id="selectedExerciseName">Wähle eine Aufgabe auf. Starte am besten mit dem Tutorial und gehe dann der
+            Reihe nach vor!</h1>
+          <div class="exercisecontainer ratio ratio-1x1">
+            <iframe id="selectedExercise" class="exerciseframe"></iframe>
+          </div>
+        </div>
+      </main>
+
+      <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+        <div class="position-sticky pt-3">
+          <h4>Status</h4>
           <div id="exerciseResult">
             <h4 id="exerciseResultHeader"></h4>
             <ul id="exerciseResultMessageList" class="list-group">
             </ul>
           </div>
-          <div class="ratio ratio-1x1">
-            <iframe id="selectedExercise" allowfullscreen></iframe>
-          </div>
+          <h4>Tipps</h4>
+          <ul id="exerciseTipps" class="list-group">
+            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">Tipp 1</h5>
+                <small>Globale Variable anlegen</small>
+              </div>
+              <p id="tippContent" class="mb-1"></p>
+              <small id="buyTippText">Nicht freigeschaltet. Für 10 Gold kaufen</small>
+            </a>
+          </ul>
         </div>
-      </main>
+      </nav>
     </div>
   </div>
 

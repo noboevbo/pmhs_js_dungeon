@@ -7,4 +7,11 @@ let validationFuncs = [
   function() { return TODO }
 ]
 
-window.onload = function() { validate(exerciseID, validationFuncs) };
+let tipps = [
+  TODO
+]
+
+window.onload = function() { 
+  window.parent.initializeTipps(tipps);
+  validate(exerciseID, validationFuncs); 
+};

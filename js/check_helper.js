@@ -117,15 +117,18 @@ export function validate(exerciseID, validationFuncs, beforeSuccess = noop, afte
       break; // TODO: support breaking and non breaking errors
     }
   }
+  let exerciseState = window.parent.getExerciseState(exerciseID);
   if (finalResult) {
     beforeSuccess();
-    localStorage.setItem("solved_" + exerciseID, true);
-    window.parent.updateExerciseState(exerciseID, true, errorMessages);
+    exerciseState.solved = true;
+    window.parent.writeExerciseState(exerciseID, exerciseState);
+    window.parent.updateExerciseState(exerciseID, exerciseState, errorMessages);
     afterSuccess();
   } else {
     beforeFail();
-    localStorage.removeItem("solved_" + exerciseID);
-    window.parent.updateExerciseState(exerciseID, false, errorMessages);
+    exerciseState.solved = false;
+    window.parent.writeExerciseState(exerciseID, exerciseState);
+    window.parent.updateExerciseState(exerciseID, exerciseState, errorMessages);
     afterFail();
   }
 }

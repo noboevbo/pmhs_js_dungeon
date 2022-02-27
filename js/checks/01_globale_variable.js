@@ -18,14 +18,14 @@ function beforeFail() {
   localStorage.removeItem("01_playerName");
 }
 
-let tipps = [
-  {level: 1, text: "Eine globale Variable wird mit dem Schlüsselwort var definiert"},
-  {level: 2, text: "Ein String wird immer in Gänsefüßchen gesetzt, z.B. \"Text\""},
-  {level: 3, text: "Die Lösung ist var spielername = \"Ein Name\""}
+let tips = [
+  {level: 1, title: "Globale Variablen anlegen", content: "Eine globale Variable wird mit dem Schlüsselwort var definiert"},
+  {level: 2, title: "Strings anlegen", content: "Ein String wird immer in Gänsefüßchen gesetzt, z.B. \"Text\""},
+  {level: 3, title: "Lösung anzeigen", content: "Die Lösung ist var spielername = \"Ein Name\""}
 ]
 
 window.onload = function() { 
-  window.parent.initializeTipps(tipps);
+  window.parent.initializeTips(exerciseID, tips);
   validate(exerciseID, validationFuncs, beforeSuccess, afterSuccess, beforeFail);
 };
 // Tests

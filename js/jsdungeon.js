@@ -18,7 +18,7 @@ var exercises = [
     { id: "15_verzweigung", name: "Verzweigungen" },
 ];
 
-const emptyExerciseState = {solved: false, tippsPurchased: [], lastUpdate: Date.now()};
+const emptyExerciseState = {solved: false, tipsPurchased: [], lastUpdate: Date.now()};
 
 // Replace console.log with stub implementation and add.
 window.console.stdlog = console.log.bind(console);
@@ -33,21 +33,34 @@ window.console.log = function(txt){
 }
 
 var playerNameEl = document.getElementById("playerName");
+var playerGoldEl = document.getElementById("playerGold");
 var selectedExerciseNameEl = document.getElementById("selectedExerciseName");
 var selectedExerciseEl = document.getElementById("selectedExercise");
 var exerciseResultEl = document.getElementById("exerciseResult");
 var exerciseResultHeaderEl = document.getElementById("exerciseResultHeader");
 var exerciseResultMessageListEl = document.getElementById("exerciseResultMessageList");
-var exerciseTippListEl = document.getElementById("exerciseTipps");
+var exerciseTipListEl = document.getElementById("exerciseTips");
+var currentTips = []
+var currentTipNodes = []
 
 function init() {
     initializeDatabase(exercises);
+    initializePlayerGold();
     updatePageVariables();
     initializeExercises();
     initializeActiveExercise();
+
 }
 
 window.onload = init;
+function initializePlayerGold() {
+    let playerGold = localStorage.getItem("playerGold");
+    if (playerGold !== null) {
+        return
+    }
+    playerGold = 1000;
+    localStorage.setItem("playerGold", playerGold);
+}
 
 function initializeDatabase(exercises) {
     for(let i=0; i<exercises.length; i++) {
@@ -67,6 +80,7 @@ function updatePageVariables() {
     Such influences on the main page should be handled here.
     */
     showPlayerName();
+    showPlayerGold();
 }
 
 function showPlayerName() {
@@ -79,6 +93,11 @@ function showPlayerName() {
     } else {
         playerNameEl.innerText = "Playername undefined.";
     }
+}
+
+function showPlayerGold() {
+    let playerGold = getPlayerGold();
+    playerGoldEl.innerText = `Gold verfügbar: ${playerGold}`;
 }
 
 function initializeExercises() {
@@ -125,6 +144,7 @@ function exerciseSelected(exerciseNumber) {
 }
 
 function setActiveExercise(exercise) {
+    exerciseTipListEl.innerHTML = "";
     selectedExerciseNameEl.innerText = "Aufgabe: " + exercise.name;
     selectedExerciseEl.src = "aufgaben/" + exercise.id + ".html";
     updateExerciseState(exercise.id, getExerciseState(exercise.id));
@@ -151,37 +171,84 @@ function getResultMessageListItem(message) {
     return li
 }
 
-const tippItemClasses = "list-group-item list-group-item-action flex-column align-items-start";
-function initializeTipps(exerciseState, tipps = []) {
-    exerciseTippListEl.innerHTML = "";
-    for (let i = 0; i < tipps.length; i++) {
-        let isPurchased = tippIsPurchased(exerciseState, tippNum);
-        // document.addE
+const tipItemClasses = "list-group-item list-group-item-action flex-column align-items-start";
+const tipTitleClasses = "d-flex w-100 justify-content-between"
+function initializeTips(exerciseID, tips = []) {
+    currentTips = tips;
+    currentTipNodes = [];
+    let exerciseState = getExerciseState(exerciseID);
+    for (let i = 0; i < tips.length; i++) {
+        let tip = tips[i]
+        let isPurchased = tipIsPurchased(exerciseID, exerciseState, i);
+        const aNode = document.createElement("a");
+        aNode.href = "#";
+        aNode.className = tipItemClasses;
+        aNode.setAttribute('onclick', `buyTip("${exerciseID}", ${i})`);
+        const titleDiv = document.createElement("div");
+        titleDiv.className = tipTitleClasses;
+        const h5Node = document.createElement("h5");
+        h5Node.className = "mb1";
+        h5Node.innerHTML = `Tipp ${i+1}`;
+        const titleSmallNode = document.createElement("small");
+        titleSmallNode.innerText = tip.title;
+        titleDiv.appendChild(h5Node);
+        titleDiv.appendChild(titleSmallNode);
+        aNode.appendChild(titleDiv);
+        const contentNode = document.createElement("p");
+        contentNode.className = "mb-1";
+        if (isPurchased) {
+            contentNode.innerHTML = tip.content;
+            aNode.classList.add("disabled");
+        } else {
+            contentNode.innerHTML = `Tipp kaufen für ${getTipPrice(tip.level)} Gold?`;
+        }
+        aNode.appendChild(contentNode);
+        exerciseTipListEl.appendChild(aNode);
+        currentTipNodes.push(aNode);
     }
-
-
-    // let exercise = exercises[i];
-    // const liNode = document.createElement("li");
-    // liNode.className = "nav-item";
-    // const linkNode = document.createElement("a");
-    // linkNode.id = exercise.id + "_link";
-    // linkNode.className = "nav-link";
-    // linkNode.setAttribute('onclick', `exerciseSelected(${i})`);
-    // linkNode.href = "#";
-    // if (localStorage.getItem("solved_" + exercise.id)) {
-    //     linkNode.innerText = "✅ " + `${i}`.padStart(2, "0") + ": " + exercise.name;
-    // } else {
-    //     linkNode.innerText = "❌ " + `${i}`.padStart(2, "0") + ": " + exercise.name;
-    // }
-    // liNode.appendChild(linkNode);
-    // exerciseListEl.appendChild(liNode);
 }
 
-function tippIsPurchased(exerciseState, tippNum) {
-    if (exerciseState.tippsPurchased.length > tippNum) {
-        return exerciseState.tippsPurchased[tippNum];
+function buyTip(exerciseID, tipNum) {
+    let tip = currentTips[tipNum];
+    let exerciseState = getExerciseState(exerciseID);
+    if (exerciseState.tipsPurchased[tipNum]) {
+        return
     }
+    exerciseState.tipsPurchased[tipNum] = true;
+    writeExerciseState(exerciseID, exerciseState);
+    updateGold(-getTipPrice(tip.level));
+    revealTip(tipNum, tip.content);
+    updatePageVariables();
+}
+
+function revealTip(tipNum, tipContent) {
+    let currentTipNode = currentTipNodes[tipNum];
+    currentTipNode.classList.add("disabled");
+    currentTipNode.children[1].innerHTML = tipContent;
+}
+
+function tipIsPurchased(exerciseID, exerciseState, tipNum) {
+    if (exerciseState.tipsPurchased.length > tipNum) {
+        return exerciseState.tipsPurchased[tipNum];
+    }
+    exerciseState.tipsPurchased = Array(currentTips.length).fill(false);
+    writeExerciseState(exerciseID, exerciseState);
     return false;
+}
+
+function getTipPrice(tipLevel) {
+    switch(tipLevel) {
+        case 1:
+            return 10;
+        case 2:
+            return 25;
+        case 3: 
+            return 50;
+        case 4:
+            return 100;
+        default:
+            return 5000;
+    }
 }
 
 function getExerciseState(exerciseID) {
@@ -190,6 +257,21 @@ function getExerciseState(exerciseID) {
         return item;
     }
     return JSON.parse(item);
+}
+
+function getPlayerGold() {
+    let playerGold = localStorage.getItem("playerGold");
+    if (playerGold === null) {
+        playerGold = 0;
+        localStorage.setItem("playerGold", playerGold);
+    }
+    return parseInt(playerGold);
+}
+
+function updateGold(amount) {
+    let playerGold = getPlayerGold();
+    playerGold += amount;
+    localStorage.setItem("playerGold", playerGold);
 }
 
 function writeExerciseState(exerciseID, exerciseState) {

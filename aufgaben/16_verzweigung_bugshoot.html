@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Dungeon</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <ol>
+        <li>Deklariere globale Variablen <i>startTime</i>, <i>roundTime</i>, <i>best</i> und <i>bugCount</i>. 
+            <ul>
+                <li>Initialisiere <i>startTime</i> mit <code><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Date/now">Date.now()</a></code></li>
+                <li>Initialisiere <i>roundTime</i> mit 0. In dieser Variable wird deine Rundenzeit in Millisekunden gemessen.</li>
+                <li>Initialisiere <i>best</i> mit <code><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_VALUE">Number.MAX_VALUE</a></code>. Hier merkst du dir die Bestzeit. Zu Beginn sollte es ein sehr hoher Wert sein :-)</li>
+                <li>Initialisiere <i>bugCount</i> mit 10.</li>
+        </ul>
+        </li>
+        <li>Füge in der Funktion <i>bugSpawn</i> eine Bedingung ein: Wenn <i>bugCount</i> größer ist als 0 werden Käfer erzeugt, ansonsten ist die Runde beendet.</li>
+        <li>Verändere die entsprechende Code-Zeile so, dass im <code>innerText</code> des Elements <i>timerEl</i> die vergangene Zeit anhand der Startzeit errechnet und angezeigt wird.</li>
+        <li>Passe die Funktion <i>hit</i> so an, dass: Wenn bugCount gleich 0 ist, dann weise der Variable <i>roundTime</i> die aktuell verstrichene Zeit zu (siehe oben) und setze <code>innerHTML</code> von <i>fieldEL</i> auf "" damit alle Bugs verschwinden.</li>
+        <li>Füge im else-Zweig in der Funktion <i>bugSpawn</i> eine verschachtelte Verzweigung ein: Wenn <i>roundTime</i> kleiner ist als <i>best</i>, dann weise <i>best</i> den Wert von <i>roundTime</i> zu und weise dem <code>innerText</code> von <i>bestEl</i> den neuen Wert von best zu.</li>
+        <li>Ergänze die Funktion <i>restart</i> und setze die Variablen <i>startTime</i>, <i>roundTime</i> und <i>bugCount</i> auf ihre Anfangswerte zurück.</li>
+        <li>Teste das Spiel!</li>
+    </ol>
+
+    <hr>
+    <h2>Shooter</h2>
+    <p>Versuche die Bugs (Lady Beetle &#128030;) zu treffen. Ein Klick oder Touch genügt. Versuche deine Bestzeit zu
+        erreichen.</p>
+    <div style="width: 100%;"><span style="border: 1px solid black;">&#128030; : <span id="count">10</span></span> <span
+            style="border: 1px solid black; float: right">&#9201; : <span id="timer">0</span></span></div>
+    <div id="field" style="background-color: lightgreen; position:relative; width: 100%; height: 500px; border: 1px solid black;"></div>
+    <h3>Bestzeit: <span id="best">0</span></h3>
+    <button onclick="restart()">Neustart</button>
+    </div>
+
+    <!-- JavaScript Code -->
+    <script id="exerciseScript">
+        // *** Füge unter diesem Text deinen Code ein um die Aufgabe zu lösen ***
+
+        //Dauer einer Runde in Millisekunden
+        const fieldEl = document.getElementById("field")
+        const timerEl = document.getElementById("timer")
+        const countEl = document.getElementById("count")
+        const bestEl = document.getElementById("best")
+        //1. ToDo: globale Variablen startTime, roundTime, best und bugCount
+
+        function restart() {
+            //6. ToDo: bugCount, roundTime und startTime auf Anfangswerte zurücksetzen
+            bugCount = 10
+            roundTime = 0
+            startTime = Date.now()
+
+            //Zeitverzögerung von 1 Sekunde zur Ausführung von bugSpawn
+            setTimeout(bugSpawn, 1000)
+        }
+
+        function bugSpawn() {
+            //2. ToDo: folgenden Code-Block nur ausführen, wenn bugCount noch größer ist als 0
+            if (true) {
+                //Der lokalen Variablen werden zufällige ganze Zahl zwischen 0 und 100 zugewiesen
+                let zufallX = Math.floor(Math.random() * 100)
+                let zufallY = Math.floor(Math.random() * 100)
+
+                let bug = document.createElement('span')
+                bug.innerHTML = "&#128030;"
+                bug.addEventListener('click', hit)
+                bug.style = "cursor:grab; position:absolute; top:" + zufallY + "%; left:" + zufallX + "%;"
+                fieldEl.appendChild(bug)
+
+                //3. ToDo: in timerEl anzeigen wie viel Zeit schon vergangen ist in Sekunden
+                timerEl.innerText = (Date.now() - 0)/1000
+
+                setTimeout(bugSpawn, 1000)
+            } else {
+                //5. ToDo: Wenn aktuelle roundTime kleiner ist als best, dann speichere aktuelle roundTime in best und weise dem innerText von bestEl den Wert von rountTime zu.
+            }
+        }
+
+
+        function hit(event) {
+            event.target.remove()
+            bugCount--
+            countEl.innerText = bugCount
+
+            //4. ToDo: Wenn der bugCount 0 ist, dann wird die die vergangene Zeit in roundTime gemerkt und innerHTML von fieldEL auf "" gesetzt
+        }
+
+        setTimeout(bugSpawn, 1000)
+    </script>
+
+    <!-- ************ Den Code hier drunter nicht bearbeiten! ***************** -->
+    <script type="module" src="../js/checks/16_verzweigung_bugshoot.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

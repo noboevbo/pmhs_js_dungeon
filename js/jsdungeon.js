@@ -16,6 +16,7 @@ var exercises = [
     { id: "13_bedingungen", name: "Bedingungen" },
     { id: "14_bedingte_anweisungen", name: "Bedingte Anweisungen" },
     { id: "15_verzweigung", name: "Verzweigungen" },
+    { id: "16_verzweigung_bugshoot", name: "Verzweigungen (Bugshooter)"}
 ];
 
 const emptyExerciseState = {solved: false, tipsPurchased: [], lastUpdate: Date.now()};

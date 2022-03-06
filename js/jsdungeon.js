@@ -15,8 +15,9 @@ var exercises = [
     { id: "12_datentyp_bool_vergleich", name: "Datentyp Boolean und Vergleiche" },
     { id: "13_bedingungen", name: "Bedingungen" },
     { id: "14_bedingte_anweisungen", name: "Bedingte Anweisungen" },
-    { id: "15_verzweigung", name: "Verzweigungen" },
     { id: "15_1_verzweigung_1x1", name: "Verzweigung (1x1)" },
+    { id: "15_verzweigung", name: "Verzweigungen" },
+    { id: "16_1_verzweigung_catchIt", name: "Verzweigungen (CatchIt)" },
     { id: "16_verzweigung_bugshoot", name: "Verzweigungen (Bugshooter)" }
 ];
 

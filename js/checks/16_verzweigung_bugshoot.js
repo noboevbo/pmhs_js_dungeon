@@ -3,17 +3,17 @@ import { validate, localVarExists, scriptIncludes, isType, globalVarExists } fro
 let exerciseID = "16_verzweigung_bugshoot";
 
 let validationFuncs = [
-    //ToDo: Prüfungen einbauen
-    //function() { return globalVarExists("round") },
-    //function() { return isType(round, "round", "number") },
-    //function() { return localVarExists(ein, "ein") }, TODO: lässt sich noch nicht prüfen wegen Scope
-    //function() { return isType(ein, "ein", "number") },
-    //function() { return scriptIncludes("document.getElementById(") },
-    //function() { return scriptIncludes("valueAsNumber") },
-    //function() { return scriptIncludes("alert(") },
-    //function() { return scriptIncludes("return true") },
-    //function() { return scriptIncludes(">") },
-    //function() { return scriptIncludes("===") }
+    function() { return globalVarExists("startTime") },
+    function() { return isType(startTime, "startTime", "number") },
+    function() { return globalVarExists("roundTime") },
+    function() { return isType(roundTime, "roundTime", "number") },
+    function() { return globalVarExists("best") },
+    function() { return isType(best, "best", "number") },
+    function() { return globalVarExists("bugCount") },
+    function() { return isType(bugCount, "bugCount", "number") },
+    function() { return scriptIncludes(">=") },
+    function() { return scriptIncludes("fieldEl.innerHTML") },
+    function() { return scriptIncludes("<") }
 ]
 
 window.onload = function() { validate(exerciseID, validationFuncs) };

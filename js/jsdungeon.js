@@ -16,17 +16,18 @@ var exercises = [
     { id: "13_bedingungen", name: "Bedingungen" },
     { id: "14_bedingte_anweisungen", name: "Bedingte Anweisungen" },
     { id: "15_verzweigung", name: "Verzweigungen" },
-    { id: "16_verzweigung_bugshoot", name: "Verzweigungen (Bugshooter)"}
+    { id: "15_1_verzweigung_1x1", name: "Verzweigung (1x1)" },
+    { id: "16_verzweigung_bugshoot", name: "Verzweigungen (Bugshooter)" }
 ];
 
-const emptyExerciseState = {solved: false, tipsPurchased: [], lastUpdate: Date.now()};
+const emptyExerciseState = { solved: false, tipsPurchased: [], lastUpdate: Date.now() };
 
 // Replace console.log with stub implementation and add.
 window.console.stdlog = console.log.bind(console);
-window.console.log = function(txt){
+window.console.log = function(txt) {
     console.stdlog(txt);
     let logcalls = JSON.parse(localStorage.getItem("logcalls"));
-    if(!logcalls){
+    if (!logcalls) {
         logcalls = [];
     }
     logcalls.push(txt);
@@ -54,6 +55,7 @@ function init() {
 }
 
 window.onload = init;
+
 function initializePlayerGold() {
     let playerGold = localStorage.getItem("playerGold");
     if (playerGold !== null) {
@@ -64,7 +66,7 @@ function initializePlayerGold() {
 }
 
 function initializeDatabase(exercises) {
-    for(let i=0; i<exercises.length; i++) {
+    for (let i = 0; i < exercises.length; i++) {
         let exercise = exercises[i];
         let item = localStorage.getItem(exercise.id);
         if (item !== null) {
@@ -174,6 +176,7 @@ function getResultMessageListItem(message) {
 
 const tipItemClasses = "list-group-item list-group-item-action flex-column align-items-start";
 const tipTitleClasses = "d-flex w-100 justify-content-between"
+
 function initializeTips(exerciseID, tips = []) {
     currentTips = tips;
     currentTipNodes = [];
@@ -238,12 +241,12 @@ function tipIsPurchased(exerciseID, exerciseState, tipNum) {
 }
 
 function getTipPrice(tipLevel) {
-    switch(tipLevel) {
+    switch (tipLevel) {
         case 1:
             return 10;
         case 2:
             return 25;
-        case 3: 
+        case 3:
             return 50;
         case 4:
             return 100;

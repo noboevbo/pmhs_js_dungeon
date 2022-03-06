@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Dungeon</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    Erweitere die Funktion <i>loeseMultipl()</i>:
+    <ol>
+        <li>Deklariere eine lokale Variable <i>erg</i> und initialisiere sie mit der Eingabe des Benutzers aus dem Feld mit der <i>id: eingabe1</i> als number (vauelAsNumber).</li>
+        <li>Lass eine Entscheidung treffen:
+            <ul>
+                <li>Wenn <i>erg</i> gleich ist wie das Ergebnis der Multiplikation von <i>zufall1</i> und zufall2, dann ...
+                    <ul>
+                        <li>Gib in einem Alert-Dialog "Super, das war richtig! Nächste Aufgabe..." aus.</li>
+                        <li>Rufe die Funktion <i>startMultipl()</i> auf, um neue Zufallszahlen zu generieren.</li>
+                    </ul>
+                </li>
+                <li>... ansonsten gib in einem Alert-Dialog aus "Leider falsch. Versuch es nochmal!"</li>
+            </ul>
+        </li>
+        <li>Teste das Spiel mit richtigen und falschen Ergebnissen!</li>
+    </ol>
+
+    <hr>
+    <h2>Einmaleins</h2>
+    <p>Multipliziere die folgenden zwei Zahlen:</p>
+    <span style="border: 1px solid gray;" id="zahl1"></span> x <span style="border: 1px solid gray;" id="zahl2"></span> =
+    <input type="number" id="eingabe1" class="form-control" placeholder="Ergebnis">
+    <button class="btn btn-outline-secondary" type="button" onclick="loeseMultipl()">Lösen</button>
+
+    </div>
+
+    <!-- JavaScript Code -->
+    <script id="exerciseScript">
+        //sobald die Seite vollständig geladen ist führe Funktion loeseMultipl() aus
+        onready = startMultipl()
+        var zufall1
+        var zufall2
+
+        function startMultipl() {
+            //Den globalen Variablen zufall1 und zufall2 werden zufällige ganze Zahlen zwischen 0 und 10 zugewiesen
+            zufall1 = Math.floor(Math.random() * 10)
+            zufall2 = Math.floor(Math.random() * 10)
+
+            //Text in den HTML-Elementen mit id="zahl1" und id="zahl2" anpassen
+            document.getElementById("zahl1").innerText = zufall1
+            document.getElementById("zahl2").innerText = zufall2
+        }
+
+        function loeseMultipl() {
+            // *** Füge unter diesem Text deinen Code ein um die Aufgabe zu lösen ***
+
+        }
+    </script>
+
+    <!-- ************ Den Code hier drunter nicht bearbeiten! ***************** -->
+    <script type="module" src="../js/checks/15_1_verzweigung_1x1.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

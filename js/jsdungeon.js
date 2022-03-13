@@ -19,7 +19,8 @@ var exercises = [
     { id: "15_verzweigung", name: "Verzweigungen" },
     { id: "16_1_verzweigung_catchIt", name: "Verzweigungen (CatchIt)" },
     { id: "16_verzweigung_bugshoot", name: "Verzweigungen (Bugshooter)" },
-    { id: "17_array_string", name: "Array (Farbstrings)" },
+    { id: "18_while_durchschnitt", name: "While (Durchschnitt)"},
+    { id: "17_array_string", name: "Array (Farbstrings)" }
 ];
 
 const emptyExerciseState = { solved: false, tipsPurchased: [], lastUpdate: Date.now() };

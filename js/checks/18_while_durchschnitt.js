@@ -4,13 +4,13 @@ let exerciseID = "18_while_durchschnitt";
 
 let validationFuncs = [
     function() { return localVarExists(eingabe, "eingabe") },
-    function() { return isType(eingabe, "eingabe", "String") },
+    function() { return isType(eingabe, "eingabe", "string") },
     function() { return localVarExists(i, "i") },
-    function() { return isType(i, "i", "Number") },
+    function() { return isType(i, "i", "number") },
     function() { return localVarExists(n, "n") },
-    function() { return isType(n, "n", "Number") },
+    function() { return isType(n, "n", "number") },
     function() { return localVarExists(sum, "sum") },
-    function() { return isType(sum, "sum", "Number") },
+    function() { return isType(sum, "sum", "number") },
     function() { return scriptIncludes("while")},
     function() { return scriptIncludes(">=")}
 ]

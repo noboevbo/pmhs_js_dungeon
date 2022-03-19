@@ -9,17 +9,7 @@
 </head>
 
 <body>
-    <ol>
-        <li>Deklariere die globalen Variablen <i>score</i> und <i>seconds</i> und initialisiere beide mit 0.</li>
-        <li>Füge in der Funktion <i>moveIt</i> Bedingte Anweisungen ein: Wenn <i>seconds</i> größer ist als 30 (Zeit abgeleufen), dann wird das Spiel mit Hilfe der Funktion <a href="https://www.mediaevent.de/javascript/setinterval.html"><code>clearInterval(timer)</code></a>            angehalten und anschließend eine Meldung in einem Alert-Dialog ausgegeben, die den erreichten score enthält.</li>
-        <li>Passe die Funktion <i>hit</i> so an, dass der Wert der Variable <i>score</i> um eins erhöht wird (nutze dazu die kürzest mögliche Schreibweise) und anschließend der innerText des <i>countEl</i> diesen Wert erhält.</li>
-        <li>Ergänze die Funktion <i>restart</i> und setze die Variablen <i>timer</i>, <i>score</i> und <i>seconds</i> auf ihre Anfangswerte zurück.</li>
-        <li>Teste das Spiel!</li>
-    </ol>
-
-
-
-    <hr>
+    <!-- HTML Code -->
     <h2>Catch it</h2>
     <p>Versuche die Fledermaus (&#129415) in 30 Sekunden möglichst oft zu fangen. Ein Klick oder Touch genügt.</p>
     <div style="width: 100%;"><span style="border: 1px solid black;">&#129415 : <span id="count">0</span></span> <span style="border: 1px solid black; float: right">&#9201; : <span id="timer">0</span></span>
@@ -28,7 +18,6 @@
         <span id="bat" style="position: absolute; transition: all 0.5s; font-size: 3em;" onmousedown="hit()">&#129415</span>
     </div>
     <button onclick="restart()">Neustart</button>
-    </div>
 
     <!-- JavaScript Code -->
     <script id="exerciseScript">
@@ -67,8 +56,8 @@
     </script>
 
     <!-- ************ Den Code hier drunter nicht bearbeiten! ***************** -->
-    <script type="module" src="../js/checks/16_1_verzweigung_catchIt.js"></script>
-    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="../js/exercises/16_1_verzweigung_catchIt.js"></script>
+  
 </body>
 
 </html>

@@ -9,22 +9,12 @@
 </head>
 
 <body>
-    <ol>
-        <li>Deklariere die globalen Variablen <i>tmp1</i>, <i>tmp2</i>, <i>score1</i> und <i>score2</i>. Initialisiere alle mit dem Wert <i>0</i>.</li>
-        <li>Deklariere eine globale Variable <i>kampf</i> und weise ihr den Wert "" (leerer String) zu.</li>
-        <li>Füge folgende Anweisungen in die Funktion <em>buttonGeklickt()</em> ein</li>
-        <li>Greife auf die HTML Eingabefelder (id: <em>eingabe1</em> und id: <em>eingabe2</em>) zu. Tipp: Nutze die Funktion <em>document.getElementById(<b>ID</b>)</em>!</li>
-        <li>Lies jeweils die nummerischen Werte (valueAsNumber) der Eingabefelder aus und speichere sie in <em>tmp1</em> und <em>tmp2</em>.</li>
-        <li>Addiere den Wert von <i>tmp1</i> zu <i>score1</i> und den von <i>tmp2</i> zu <i>score2</i>.</li>
-        <li>Speichere in <i>kampf</i> das Ergebnis der Konkatenation (Verketting von Zeichen mit '+') von <i>score1</i>, <i>" vs. "</i> und <i>score2</i></li>
-        <li>Greife auf die Überschrift mit der id <em>ergebnis</em> zu und ändere den innerText des Elements auf auf den Wert von <i>kampf</i>.</li>Tipp: Nutze für den Zugriff auf das Element <em>document.getElementById(<b>id</b>).innerText</em></li>
-    </ol>
+    <!-- HTML Code -->
     <span class="input-group-text">Punkte</span>
     <input type="number" id="eingabe1" class="form-control" placeholder="Punkte Spieler 1" value="0">
     <input type="number" id="eingabe2" class="form-control" placeholder="Punkte Spieler 2" value="0">
     <button class="btn btn-outline-secondary" type="button" onclick="buttonGeklickt()">Absenden</button>
     <h1 id="ergebnis"></h1>
-    </div>
 
     <!-- JavaScript Code -->
     <script id="exerciseScript">
@@ -38,8 +28,8 @@
     </script>
 
     <!-- ************ Den Code hier drunter nicht bearbeiten! ***************** -->
-    <script type="module" src="../js/checks/11_datentyp_mix.js"></script>
-    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="../js/exercises/11_datentyp_mix.js"></script>
+  
 </body>
 
 </html>

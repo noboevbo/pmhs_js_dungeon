@@ -4,74 +4,74 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JavaScript Dungeon</title>
-  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <title>PMHS - HTML/CSS Dungeon</title>
+  <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
+  <link href="css/nes.css" rel="stylesheet">
   <link href="css/main.css" rel="stylesheet">
 </head>
 
 <body>
   <!-- Leiste oben -->
-  <header class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">PMHS - JavaScript Dungeon</a>
-      <span id="playerName" class="navbar-text">
+  <div class="wrapper">
+    <header class="main-header">
+      <a class="left" href="#">PMHS - HTML/CSS Dungeon</a>
+      <span id="playerName" class="center">
         Spielername nicht verfügbar.
       </span>
-      <span id="playerGold" class="navbar-text">
-        Gold nicht verfügbar
-      </span>
-    </div>
-  </header>
+      <div class="right">
+        <i class="nes-icon coin is-small"></i>
+        <span id="playerGold">
+          0
+        </span>
+      </div>
 
-  <!-- Inhalt unter der Leiste -->
-  <div class="container-fluid">
-    <div class="row">
-      <!-- Sidebar links -->
-      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
-        <div class="position-sticky pt-3">
-          <h4>Aufgaben</h4>
-          <ul id="exerciseList" class="nav flex-column">
-          </ul>
+    </header>
+
+    <nav class="main-nav">
+      <ul id="exerciseList" class="nav flex-column">
+      </ul>
+    </nav>
+    <!-- Inhalt der Seite -->
+    <main class="content">
+      <section>
+        <h1 class="title" id="selectedExerciseName">Wähle ein Level aus der Navigation auf der linken Seite. Starte am
+          besten
+          mit dem Tutorial und gehe dann der
+          Reihe nach vor!</h1>
+        <div class="nes-container is-rounded with-title">
+          <div class="title">Auftrag</div>
+          <div id="selectedExerciseInstructions"></div>
         </div>
-      </nav>
-
-      <!-- Inhalt der Seite -->
-      <main class="col-md-6 ms-sm-auto col-lg-8 px-md-4">
-        <div class="container">
-          <h1 id="selectedExerciseName">Wähle eine Aufgabe aus der Navigation auf der linken Seite. Starte am besten mit dem Tutorial und gehe dann der
-            Reihe nach vor!</h1>
-          <div class="exercisecontainer ratio ratio-1x1">
-            <iframe id="selectedExercise" class="exerciseframe"></iframe>
+      </section>
+      <section class="exercise-section">
+        <div class="nes-container is-rounded with-title">
+          <p class="title">Ergebnis</p>
+          <div class="exercise-container ">
+            <iframe id="selectedExercise" class="exercise-frame"></iframe>
           </div>
         </div>
-      </main>
-
-      <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
-        <div class="position-sticky pt-3">
-          <h4>Status</h4>
-          <div id="exerciseResult">
-            <h4 id="exerciseResultHeader"></h4>
-            <ul id="exerciseResultMessageList" class="list-group">
-            </ul>
-          </div>
-          <h4>Tipps</h4>
-          <ul id="exerciseTips" class="list-group">
-            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-              <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">Tipp 1</h5>
-                <small>Globale Variable anlegen</small>
-              </div>
-              <p id="tippContent" class="mb-1"></p>
-              <small id="buyTippText">Nicht freigeschaltet. Für 10 Gold kaufen</small>
-            </a>
-          </ul>
-        </div>
-      </nav>
-    </div>
+      </section>
+    </main>
+    <aside class="side">
+      <h4>Status</h4>
+      <div id="exerciseResult">
+        <h4 id="exerciseResultHeader"></h4>
+        <ul id="exerciseResultMessageList" class="list-group">
+        </ul>
+      <div id="exerciseResultFooter"></div>
+      </div>
+    </aside>
+    </main>
   </div>
+  <footer id="mainFooter" class="main-footer">
+    <div class="nes-container is-rounded is-dark main-footer-content">
+      <div id="exerciseTips" class="exercise-tips"></div>
+  </footer>
+  <div id="dialogWrapper"></div>
 
-  <script src="js/jsdungeon.js"></script>
-  <script src="js/bootstrap.bundle.min.js"></script>
+
+  <script type="module" src="js/app/jsdungeon.js"></script>
+  <!-- <script src="js/bootstrap.bundle.min.js"></script> -->
   <script src="js/esprima.js"></script>
   <script src="js/estraverse.browser.js"></script>
 </body>

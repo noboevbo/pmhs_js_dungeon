@@ -21,7 +21,24 @@ Erweitere die Funktion <i>loeseMultipl()</i>:
 </ol>
 `;
 
-let tips = [];
+let tips = [
+    {
+        level: 3,
+        title: "Lösung anzeigen",
+        content: `Die Lösung lautet: <xmp>
+        let erg = document.getElementById("eingabe1").valueAsNumber;
+        if (erg === (zufall1*zufall2)) {
+            alert("Richtig");
+            startMultipl();
+        } else {
+            alert("Leider falsch. Versuch es nochmal!");
+        }
+        </xmp>`,
+        weblinks: [],
+        contentIsHTML: true
+    }
+
+];
 
 let validationFuncs = [
     function() { return scriptIncludes("erg") },

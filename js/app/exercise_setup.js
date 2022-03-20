@@ -23,6 +23,7 @@ var exercises = [
   { id: "18_while_durchschnitt", name: "While (Durchschnitt)", level: 2 },
   { id: "17_1_array_numbers", name: "Array mit Zahlen", level: 1},
   { id: "17_array_string", name: "Array (Farbstrings)", level: 2 },
+  { id: "18_2_while_mailstring", name:"While mit String als Array", level:3}
   
 ];
 

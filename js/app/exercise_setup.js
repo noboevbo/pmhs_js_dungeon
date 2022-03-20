@@ -19,6 +19,7 @@ var exercises = [
   { id: "15_verzweigung", name: "Verzweigungen", level: 2 },
   { id: "16_1_verzweigung_catchIt", name: "Verzweigungen (CatchIt)", level: 2 },
   { id: "16_verzweigung_bugshoot", name: "Verzweigungen (Bugshooter)", level: 2 },
+  { id: "18_1_while_bedingung", name: "While mit Bedingung", level: 1},
   { id: "18_while_durchschnitt", name: "While (Durchschnitt)", level: 1 },
   { id: "17_array_string", name: "Array (Farbstrings)", level: 2 }
 ];

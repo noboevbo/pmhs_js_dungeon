@@ -19,7 +19,21 @@ let instructions = `
 </ol>
 `;
 
-let tips = [];
+let tips = [{
+    level: 1,
+    title: "Eingabe mit prompt",
+    content: "Mit der Funktion prompt('Meldung') kann ein Eingabedialog aufgerufen werden, der die Meldung anzeigt. Der Rückgabewert der Funktion ist ein String, der Vom Benutzer eingegeben wurde z.B. let str = prompt('Wert eingeben')."
+  },
+  {
+    level: 2,
+    title: "Konvertierung in Number",
+    content: "Mit der Funktion Number('2.5') lässt sich der String in eine Zahl umwandeln. z.B. let n = Number(str)."
+  },
+  {
+    level: 3,
+    title: "Berechnung und Ausgabe (Lösung)",
+    content: "alert('Hallo Welt!)' gibt den übergebenen String in einem Dialogfenster aus. Mit der Formel alert(sum/n) wird das berechnete Ergebnis ausgegeben."
+  }];
 
 let validationFuncs = [
     function() { return localVarExists(eingabe, "eingabe") },

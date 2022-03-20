@@ -1,6 +1,6 @@
 import { localVarExists, scriptIncludes, isType, valueEquals } from "../exercise/validation_helper.js";import { Exercise } from '../exercise/exercise_base.js';
 
-let exerciseID = "18_while_durchschnitt";
+let exerciseID = "18_1_while_bedingung";
 
 let instructions = `
 <ol>

@@ -1,6 +1,6 @@
 import { localVarExists, scriptIncludes, isType } from "../exercise/validation_helper.js";import { Exercise } from '../exercise/exercise_base.js';
 
-let exerciseID = "17_1_array_numbers";
+let exerciseID = "21_array_numbers";
 
 let instructions = `<p> Im folgenden sollen die sogenannten Fibonacci-Zahlen berechnet werden.</p>
 <ol>

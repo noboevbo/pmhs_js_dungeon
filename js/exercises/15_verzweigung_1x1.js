@@ -1,6 +1,6 @@
 import { scriptIncludes } from "../exercise/validation_helper.js";import { Exercise } from '../exercise/exercise_base.js';
 
-let exerciseID = "15_1_verzweigung_1x1";
+let exerciseID = "15_verzweigung_1x1";
 
 let instructions = `
 Erweitere die Funktion <i>loeseMultipl()</i>:

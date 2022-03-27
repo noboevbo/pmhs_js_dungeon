@@ -1,6 +1,6 @@
 import { localVarExists, scriptIncludes, isType, globalVarExists } from "../exercise/validation_helper.js";import { Exercise } from '../exercise/exercise_base.js';
 
-let exerciseID = "15_verzweigung";
+let exerciseID = "16_verzweigung";
 
 let instructions = `
 <ol>

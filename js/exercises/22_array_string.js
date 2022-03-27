@@ -1,6 +1,6 @@
 import { isConst, scriptIncludes, isType } from "../exercise/validation_helper.js";import { Exercise } from '../exercise/exercise_base.js';
 
-let exerciseID = "17_array_string";
+let exerciseID = "22_array_string";
 
 let instructions = `
 <ol>

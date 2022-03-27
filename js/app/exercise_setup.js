@@ -15,15 +15,16 @@ var exercises = [
   { id: "12_datentyp_bool_vergleich", name: "Datentyp Boolean und Vergleiche", level: 2 },
   { id: "13_bedingungen", name: "Bedingungen", level: 2 },
   { id: "14_bedingte_anweisungen", name: "Bedingte Anweisungen", level: 2 },
-  { id: "15_1_verzweigung_1x1", name: "Verzweigung (1x1)", level: 1 },
-  { id: "15_verzweigung", name: "Verzweigungen", level: 2 },
-  { id: "16_1_verzweigung_catchIt", name: "Verzweigungen (CatchIt)", level: 2 },
-  { id: "16_verzweigung_bugshoot", name: "Verzweigungen (Bugshooter)", level: 2 },
-  { id: "18_1_while_bedingung", name: "While mit Bedingung", level: 1},
-  { id: "18_while_durchschnitt", name: "While (Durchschnitt)", level: 2 },
-  { id: "17_1_array_numbers", name: "Array mit Zahlen", level: 1},
-  { id: "17_array_string", name: "Array (Farbstrings)", level: 2 },
-  { id: "18_2_while_mailstring", name:"While mit String als Array", level:3}
+  { id: "15_verzweigung_1x1", name: "Verzweigung (1x1)", level: 1 },
+  { id: "16_verzweigung", name: "Verzweigungen", level: 2 },
+  { id: "17_verzweigung_catchIt", name: "Verzweigungen (CatchIt)", level: 2 },
+  { id: "18_verzweigung_bugshoot", name: "Verzweigungen (Bugshooter)", level: 2 },
+  { id: "19_while_bedingung", name: "While mit Bedingung", level: 1},
+  { id: "20_while_durchschnitt", name: "While (Durchschnitt)", level: 2 },
+  { id: "21_array_numbers", name: "Array mit Zahlen", level: 1},
+  { id: "22_array_string", name: "Array (Farbstrings)", level: 2 },
+  { id: "23_while_mailstring", name:"While mit String als Array", level:3},
+  { id: "24_for-counter", name: "for-Schleife Quadratzahlen", level: 1},
   
 ];
 

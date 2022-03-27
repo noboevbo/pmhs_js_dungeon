@@ -1,6 +1,18 @@
 import { localVarExists, scriptIncludes, isType, globalVarExists } from "../exercise/validation_helper.js";import { Exercise } from '../exercise/exercise_base.js';
 
-let exerciseID = "16_verzweigung_bugshoot";
+//Test: Größe des iframe anpassen
+window.addEventListener("load", fenster);
+window.addEventListener("resize", fenster);
+
+function fenster() {
+ if (parent.document.getElementsByTagName("iframe")[0]) {
+  parent.document.getElementsByTagName("iframe")[0].style.height =
+   document.getElementsByTagName("html")[0].offsetHeight +'px';
+ }
+}
+//
+
+let exerciseID = "18_verzweigung_bugshoot";
 
 let instructions = `
 <ol>

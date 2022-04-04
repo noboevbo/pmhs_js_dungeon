@@ -40,7 +40,7 @@ function test() {
 
 
 let validationFuncs = [
-  function() { return scriptIncludes("document.getElementByID(\"eingabe1\"") },
+  function() { return scriptIncludes("document.getElementById(\"eingabe1\"") },
   function() { return scriptIncludes("let spielername") },
   function() { return scriptIncludes("alert(") },
 ]

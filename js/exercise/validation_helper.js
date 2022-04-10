@@ -1,4 +1,4 @@
-import { globalVarDoesNotExistMsg, localVarDoesNotExistMsg, isGlobalNotLocalMsg, wrongTypeMsg, stringIsEmptyMsg, isNotConstMsg, elDoesNotExistMsg, elWrongInnerTextMsg, elWrongStyleValueMsg, wrongValueMsg, logCallDoesNotExist, elWrongTagMsg, validationErrorPossibleUndefinedObjMsg } from './error_messages.js'
+import { globalVarDoesNotExistMsg, localVarDoesNotExistMsg, isGlobalNotLocalMsg, wrongTypeMsg, noFunctionMsg, stringIsEmptyMsg, isNotConstMsg, elDoesNotExistMsg, elWrongInnerTextMsg, elWrongStyleValueMsg, wrongValueMsg, logCallDoesNotExist, elWrongTagMsg, validationErrorPossibleUndefinedObjMsg } from './error_messages.js'
 
 // Replace console.log with stub implementation and add.
 window.console.stdlog = console.log.bind(console);
@@ -80,6 +80,19 @@ export function isType(variable, varName, typeName) {
   return getFailResultObj(wrongTypeMsg(varName, typeName));
 }
 
+export function isFunction(functionName){
+  try{
+    let v = eval(functionName);
+      if (v instanceof Function) {
+        return getSuccessResultObj();
+      }
+    
+  } catch (e){
+    return getFailResultObj(noFunctionMsg(functionName));
+  }
+  
+  return getFailResultObj(noFunctionMsg(functionName));
+}
 
 export function consoleContains(strValue){
   let lcalls = JSON.parse(localStorage.getItem("logcalls"));

@@ -25,7 +25,9 @@ var exercises = [
   { id: "22_array_string", name: "Array (Farbstrings)", level: 2 },
   { id: "23_while_mailstring", name:"While mit String als Array", level:3},
   { id: "24_for-counter", name: "for-Schleife Quadratzahlen", level: 1},
-  
+  { id: "25_for-groesste", name: "for-Schleife größte Zahl", level: 2},
+  { id: "26_funktionen", name: "Funktionen Summenberechnung", level: 1},
+  { id: "27_funkt_mitternacht", name: "Funktion Mitternachtsformel", level: 2},
 ];
 
 export { exercises };

@@ -5,6 +5,7 @@ export const isLocalNotGlobalMsg = (varName) => { return `Die Variable <i>${varN
 export const wrongValueMsg = (varName, val) => { return `Der Wert von Variable <i>${varName}</i> ist nicht <i>${val}</i>!` };
 export const isNotConstMsg = (varName) => { return `Die Variable <i>${varName}</i> ist nicht als Konstante angelegt!` };
 export const wrongTypeMsg = (varName, requiredType) => { return `Die Variable <i>${varName}</i> ist nicht vom Typ <i>${requiredType}</i>!` };
+export const noFunctionMsg = (functionName) => {return `<i>${functionName}</i> ist keine Funktion!` };
 export const stringIsEmptyMsg = (varName) => { return `Die Variable <i>${varName}</i> vom Typ String hat keinen Inhalt!` };
 export const scriptDoesNotContainMsg = (requiredText) => { return `Dein Script enthält kein <i>${requiredText}</i>!` };
 export const elDoesNotExistMsg = (elID) => { return `Das HTML Element <i>${elID}</i> existiert nicht!` };

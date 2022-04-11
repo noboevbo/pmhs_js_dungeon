@@ -22,6 +22,12 @@ let instructions = `
 
 let tips = [
   {
+    level: 0,
+    title: "Video: Einführung in Funktionen",
+    content: '<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/HoS-3bLrzrU" title="YouTube video player" frameborder="0" allowfullscreen></iframe>',
+    contentIsHTML: true
+  },
+  {
     level: 1,
     title: "Funktionsdefinition schreiben",
     content: "Nach dem Schlüsselwort <i>function</i> folgt der Name der Funktion. Anschließend werden in runden Klammern () die Parameter aufgeführt. Danach folgt in geschweiften Klammern {} der Anweisungsblock."

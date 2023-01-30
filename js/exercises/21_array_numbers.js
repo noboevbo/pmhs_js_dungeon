@@ -1,4 +1,4 @@
-import { localVarExists, scriptIncludes, isType } from "../exercise/validation_helper.js";import { Exercise } from '../exercise/exercise_base.js';
+import { localVarExists, scriptIncludes, isType, getSuccessResultObj, getFailResultObj } from "../exercise/validation_helper.js";import { Exercise } from '../exercise/exercise_base.js';
 
 let exerciseID = "21_array_numbers";
 

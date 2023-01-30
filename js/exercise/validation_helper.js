@@ -44,6 +44,14 @@ export function valueEquals(variable, varName, val) {
   return getSuccessResultObj();
 }
 
+export function isVarArray(a, n) {
+  if (Array.isArray(a)) {
+    return getSuccessResultObj();
+  } else {
+    return getFailResultObj("Die Variable ${n} ist kein Array.")
+  }
+}
+
 export function isNonEmptyString(variable, varName) {
   if (typeof (variable) !== "string") {
     return getFailResultObj(wrongTypeMsg(varName, "string"));

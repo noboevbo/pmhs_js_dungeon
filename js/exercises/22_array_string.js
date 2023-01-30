@@ -1,4 +1,4 @@
-import { isConst, scriptIncludes, isType } from "../exercise/validation_helper.js";import { Exercise } from '../exercise/exercise_base.js';
+import { isConst, scriptIncludes, isType, isVarArray } from "../exercise/validation_helper.js";import { Exercise } from '../exercise/exercise_base.js';
 
 let exerciseID = "22_array_string";
 
@@ -30,14 +30,6 @@ let tips = [{
     title: "Farbe des Body-Elements ändern",
     content: "Mit document.body.style.backgroundColor = 'red' lässt sich die Hintergrundfarbe des Body-Elements ändern. Weise ihm ein Array-Element zu."
   }];
-
-function isVarArray(a, n) {
-    if (Array.isArray(a)) {
-      return getSuccessResultObj();
-    } else {
-      return getFailResultObj("Die Variable ${n} ist kein Array.")
-    }
-  }
   
 
 let validationFuncs = [
